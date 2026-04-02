@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Γεώργιος Παραλίκης</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     NAV
+════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">./ΓΕΩΡΓΙΟΣ_ΠΑΡΑΛΙΚΗΣ</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+  <!-- Κουμπί εναλλαγής γλώσσας -->
+  <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+    <span class="lang-active" id="lang-active">ΕΛ</span>
+    <span class="lang-sep">/</span>
+    <span class="lang-inactive" id="lang-inactive">EN</span>
+  </button>
+</nav>
+
+
+<!-- ═══════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow" data-i18n="hero.eyebrow">Μηχανικός Πληροφορικής &amp; Ηλεκτρονικών Συστημάτων</div>
+        <h1><span data-i18n="hero.greeting"></span><em id="typewriter"></em></h1>
+        <p class="hero-desc" data-i18n="hero.desc">
+          Ασχολούμαι με embedded systems, AI, web development και electronics.
+          Χτίζω πράγματα που συνδέουν τον φυσικό κόσμο με το λογισμικό.
+        </p>
+        <div class="btn-row">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta">Δες τα projects →</a>
+          <button class="btn btn-outline" id="cv-btn" data-i18n="hero.cv">Κατέβασε CV</button>
+        </div>
+      </div>
+      <div class="hero-avatar">G_P_</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SKILLS
+════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// skills</p>
+      <h2>Τεχνικές δεξιότητες</h2>
+    </div>
+    <div class="skills-grid fade-in">
+
+      <div class="skill-group">
+        <p class="skill-group-title">Embedded / IoT</p>
+        <ul class="skill-list">
+          <li>C / C++</li>
+          <li>Arduino / ESP32</li>
+          <li>Raspberry Pi</li>
+          <li>RTOS</li>
+          <li>MQTT / I2C / SPI</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-title">Electronics</p>
+        <ul class="skill-list">
+          <li>Circuit Design</li>
+          <li>PCB Layout</li>
+          <li>Altium / KiCad</li>
+          <li>Signal Processing</li>
+          <li>FPGA / VHDL</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-title">AI / Data Science</p>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>TensorFlow / PyTorch</li>
+          <li>Scikit-learn</li>
+          <li>Pandas / NumPy</li>
+          <li>Jupyter</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-title">Web Development</p>
+        <ul class="skill-list">
+          <li>HTML / CSS / JS</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>REST APIs</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-title">DevOps / Cloud</p>
+        <ul class="skill-list">
+          <li>Docker</li>
+          <li>Linux / Bash</li>
+          <li>Git / GitHub</li>
+          <li>AWS / GCP</li>
+          <li>CI/CD</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PROJECTS
+════════════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// projects</p>
+      <h2>Δουλειά μου</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <span class="project-tag">Πτυχιακή Εργασία</span>
+        <h3 class="project-title">Αντιπλημμυρικό σύστημα υπόγειας διάβασης με τηλεδιοίκηση</h3>
+        <p class="project-desc">
+          Πρόκειται για ένα project το οποίο συνδυάζει, μεταξύ άλλων, γνώσεις ηλεκτρονικής, 
+          ηλεκτρολογίας, δικτύων και προγραμματισμού (Touch panel Scheider Magelis, PLC Logo).
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">PLC</span>
+          <span class="stack-pill">Electrinics</span>
+          <span class="stack-pill">Networking</span>
+          <span class="stack-pill">Industrial</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/" class="project-link">GitHub ↗</a>
+          <a href="#" class="project-link">Demo ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in placeholder">
+        <span class="project-tag">Σύντομα</span>
+        <h3 class="project-title">Επόμενο project</h3>
+        <p class="project-desc">
+          Εδώ μπαίνει το επόμενο project σου. Ακόμα και ένα μικρό side-project αξίζει να φαίνεται.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">???</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     EDUCATION
+════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// education</p>
+      <h2>Σπουδές</h2>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-year">2020 – 2025</div>
+      <div>
+        <h3 class="edu-degree">Πτυχίο Μηχανικών Πληροφορικής &amp; Ηλεκτρονικών Συστημάτων</h3>
+        <p class="edu-school">ΔΙΠΑΕ, Θεσσαλονίκης &nbsp;&nbsp;</p>
+        <div class="edu-thesis">
+          <strong>Διπλωματική εργασία:</strong> Αντιπλημμυρικό σύστημα υπόγειας διάβασης με τηλεδιοίκηση.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CERTIFICATIONS
+════════════════════════════════ -->
+<section id="certs">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// certifications &amp; learning</p>
+      <h2>Πιστοποιήσεις</h2>
+    </div>
+    <div class="certs-grid fade-in">
+
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <p class="cert-name">AWS Cloud Practitioner</p>
+          <p class="cert-issuer">Amazon Web Services</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🤖</div>
+        <div>
+          <p class="cert-name">Machine Learning Specialization</p>
+          <p class="cert-issuer">Coursera / DeepLearning.AI</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🔒</div>
+        <div>
+          <p class="cert-name">CCNA / Networking</p>
+          <p class="cert-issuer">Cisco</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">⚙️</div>
+        <div>
+          <p class="cert-name">Πρόσθεσε πιστοποίηση</p>
+          <p class="cert-issuer">Issuer</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CONTACT
+════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// contact</p>
+      <h2>Επικοινωνία</h2>
+      <p class="contact-desc">
+        Ανοιχτός σε ευκαιρίες εργασίας, freelance projects και συνεργασίες.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:email@example.com" class="contact-link">✉ paralikis10@gmail.com</a>
+        <span class="contact-sep"></span>
+        <a href="https://linkedin.com/in/username" class="contact-link" target="_blank">in LinkedIn</a>
+        <span class="contact-sep"></span>
+        <a href="https://github.com/username" class="contact-link" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer>
+  <span>Built by Georgios Paralikis · 2026</span>
+</footer>
+
+<div id="cv-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <button class="modal-close" id="modal-close" aria-label="Κλείσιμο">&times;</button>
+
+    <p class="modal-label">// download cv</p>
+    <h3 id="modal-title" class="modal-title">Επέλεξε γλώσσα</h3>
+    <p class="modal-desc">Το CV είναι διαθέσιμο σε δύο εκδόσεις.</p>
+
+    <div class="modal-options">
+
+      <a href="Georgios_Paralikis_CV.pdf" download class="modal-option">
+        <span class="modal-option-flag">🇬🇷</span>
+        <div>
+          <p class="modal-option-title">Ελληνικά</p>
+          
+        </div>
+        <span class="modal-option-arrow">↓</span>
+      </a>
+
+      <a href="Georgios_Paralikis_CV_EN.pdf" download class="modal-option">
+        <span class="modal-option-flag">🇬🇧</span>
+        <div>
+          <p class="modal-option-title">English</p>
+          
+        </div>
+        <span class="modal-option-arrow">↓</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>

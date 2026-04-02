@@ -1,0 +1,813 @@
+/* ════════════════════════════════════════
+   PORTFOLIO — style.css
+   Οργάνωση:
+   1. CSS Variables (χρώματα, fonts)
+   2. Reset & Base
+   3. Nav
+   4. Layout helpers
+   5. Hero
+   6. Skills
+   7. Projects
+   8. Education
+   9. Certifications
+   10. Contact & Footer
+   11. Animations
+   12. Responsive
+════════════════════════════════════════ */
+
+
+/* ── 1. CSS VARIABLES ── */
+:root {
+  --bg:       #0d0f14;   /* κύριο background */
+  --bg2:      #13161e;   /* sections με ελαφρά διαφορά */
+  --bg3:      #1a1d28;   /* cards, hover states */
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.13);
+  --text:     #e8e6e0;   /* κύριο κείμενο */
+  --muted:    #7a7a8a;   /* δευτερεύον κείμενο */
+  --accent:   #a3c4a8;   /* πράσινο accent */
+  --accent2:  #7eb8d4;   /* μπλε accent */
+  --accent3:  #c9a96e;   /* χρυσό accent (tags) */
+
+  --serif:  'DM Serif Display', serif;
+  --mono:   'DM Mono', monospace;
+  --sans:   'DM Sans', sans-serif;
+}
+
+
+/* ── 2. RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay — αισθητικό effect */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: .4;
+}
+
+
+/* ── 3. NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  background: rgba(13,15,20,.75);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: .04em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+
+/* ── 4. LAYOUT HELPERS ── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Shared section header */
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: .7rem;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 2.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.6rem;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: var(--mono);
+  text-decoration: none;
+  transition: all .2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0d1810;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: #bfd6c4;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* ── 5. HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 5rem;
+  background:
+    radial-gradient(ellipse 70% 55% at 60% 40%, rgba(163,196,168,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(126,184,212,.05) 0%, transparent 60%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+/* Γραμμή πριν το eyebrow */
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  margin-bottom: 1.4rem;
+  color: var(--text);
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 2.4rem;
+}
+
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Avatar circle */
+.hero-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 4rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Dashed ring γύρω από το avatar */
+.hero-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(163,196,168,.25);
+}
+
+
+/* ── 6. SKILLS ── */
+#skills {
+  padding: 7rem 0;
+}
+
+/* Mosaic grid — τα κελιά χωρίζονται με 1px border */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--border); /* το background γίνεται το χρώμα του gap */
+}
+
+.skill-group {
+  background: var(--bg2);
+  padding: 1.5rem;
+}
+
+.skill-group-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.skill-list {
+  list-style: none;
+}
+
+.skill-list li {
+  font-size: 14px;
+  color: var(--muted);
+  padding: .25rem 0;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  transition: color .2s;
+}
+
+.skill-list li:hover {
+  color: var(--text);
+}
+
+/* Bullet dot */
+.skill-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border2);
+  flex-shrink: 0;
+}
+
+
+/* ── 7. PROJECTS ── */
+#projects {
+  padding: 7rem 0;
+  background: var(--bg2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+  transition: border-color .25s, transform .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
+/* Gradient line που εμφανίζεται στο hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Placeholder card (για future projects) */
+.project-card.placeholder {
+  border-style: dashed;
+  opacity: .55;
+}
+
+.project-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent3);
+  background: rgba(201,169,110,.08);
+  border: 1px solid rgba(201,169,110,.2);
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-bottom: 1rem;
+  letter-spacing: .05em;
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: .6rem;
+  color: var(--text);
+}
+
+.project-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: 1.4rem;
+}
+
+.stack-pill {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--muted);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 8px;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--accent2);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.project-link:hover {
+  color: var(--text);
+}
+
+
+/* ── 8. EDUCATION ── */
+#education {
+  padding: 7rem 0;
+}
+
+.edu-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.edu-year {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: .15rem;
+}
+
+.edu-degree {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: .3rem;
+}
+
+.edu-school {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.edu-thesis {
+  background: var(--bg2);
+  border-left: 2px solid var(--accent);
+  padding: .8rem 1rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.edu-thesis strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+
+/* ── 9. CERTIFICATIONS ── */
+#certs {
+  padding: 7rem 0;
+  background: var(--bg2);
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.cert-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color .2s;
+}
+
+.cert-card:hover {
+  border-color: var(--border2);
+}
+
+.cert-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background: var(--bg3);
+}
+
+.cert-name {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+
+/* ── 10. CONTACT & FOOTER ── */
+#contact {
+  padding: 7rem 0 6rem;
+  text-align: center;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(163,196,168,.05) 0%, transparent 70%);
+}
+
+.contact-desc {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 440px;
+  margin: 0 auto 2.5rem;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+}
+
+.contact-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border2);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* ── 11. ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── 12. RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav {
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-links {
+    display: none; /* κρύβουμε τα links σε mobile */
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr; /* ένα column αντί για δύο */
+  }
+
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+    font-size: 2.8rem;
+  }
+
+  .edu-card {
+    grid-template-columns: 1fr; /* έτος πάνω, κείμενο κάτω */
+    gap: 1rem;
+  }
+}
+
+/* Active nav link (προστίθεται από το main.js) */
+.nav-links a.active {
+  color: var(--text);
+}
+
+
+/* ── 13. CV MODAL ── */
+
+/* Σκοτεινό overlay που καλύπτει όλη την οθόνη */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  /* Αρχική κατάσταση: κρυμμένο */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+/* Όταν είναι ανοιχτό, προσθέτει το JS την class "open" */
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Το λευκό (εδώ dark) κουτί */
+.modal-box {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+
+  /* Slide-up animation */
+  transform: translateY(16px);
+  transition: transform .25s ease;
+}
+
+.modal-overlay.open .modal-box {
+  transform: translateY(0);
+}
+
+/* Κουμπί κλεισίματος × */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: .2rem .4rem;
+  border-radius: 4px;
+  transition: color .2s, background .2s;
+}
+
+.modal-close:hover {
+  color: var(--text);
+  background: var(--bg3);
+}
+
+.modal-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.modal-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: .4rem;
+  color: var(--text);
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+/* Κάθε επιλογή (ΕΛ / EN) */
+.modal-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color .2s, transform .2s;
+  cursor: pointer;
+}
+
+.modal-option:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
+
+.modal-option-flag {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.modal-option-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .1rem;
+}
+
+.modal-option-sub {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--muted);
+}
+
+.modal-option-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: color .2s;
+}
+
+.modal-option:hover .modal-option-arrow {
+  color: var(--accent);
+}
+
+/* ── 14. TYPEWRITER CURSOR ── */
+
+/* Ο αναβοσβήνων cursor μετά το όνομα */
+#typewriter::after {
+  content: '|';
+  color: var(--accent);
+  font-style: normal;
+  animation: blink .7s step-end infinite;
+}
+
+/* Όταν τελειώσει η πληκτρολόγηση, σταματά να αναβοσβήνει */
+#typewriter.done::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
