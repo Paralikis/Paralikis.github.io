@@ -37,14 +37,15 @@
         <h1><span data-i18n="hero.greeting"></span><em id="typewriter"></em></h1>
         <p class="hero-desc" data-i18n="hero.desc">
           Ασχολούμαι με embedded systems, AI, web development και electronics.
-          Χτίζω πράγματα που συνδέουν τον φυσικό κόσμο με το λογισμικό.
+          Με ενδιαφέρει ιδιαίτερα η εφαρμογή νέων τεχνολογιών στις ενεργειακές υποδομές 
+          και η εργασία σε απαιτητικά τεχνικά περιβάλλοντα, όπως οι ηλεκτρικοί υποσταθμοί.
         </p>
         <div class="btn-row">
           <a href="#projects" class="btn btn-primary" data-i18n="hero.cta">Δες τα projects →</a>
           <button class="btn btn-outline" id="cv-btn" data-i18n="hero.cv">Κατέβασε CV</button>
         </div>
       </div>
-      <div class="hero-avatar">G_P_</div>
+      <div class="hero-avatar"><img src="images/MyPhoto.jpg" alt="Φωτογραφία προφίλ"></div>
     </div>
   </div>
 </section>
@@ -126,7 +127,7 @@
   <div class="container">
     <div class="fade-in">
       <p class="section-label">// projects</p>
-      <h2>Δουλειά μου</h2>
+      <h2>Εργασίες</h2>
     </div>
     <div class="projects-grid">
 
@@ -143,7 +144,8 @@
           <span class="stack-pill">Networking</span>
           <span class="stack-pill">Industrial</span>
         </div>
-        <div class="project-links">
+        <button id="photos-open-btn" class="project-link">📷 Ρίξε μια ματιά</button>
+       <!-- <div class="project-links">
           <a href="https://github.com/" class="project-link">GitHub ↗</a>
           <a href="#" class="project-link">Demo ↗</a>
         </div>
@@ -158,7 +160,7 @@
         <div class="project-stack">
           <span class="stack-pill">???</span>
         </div>
-      </div>
+      </div>-->
 
     </div>
   </div>
@@ -239,9 +241,9 @@
       <div class="contact-links">
         <a href="mailto:email@example.com" class="contact-link">📧 paralikis10@gmail.com</a>
         <span class="contact-sep"></span>
-        <a href="https://linkedin.com/in/username" class="contact-link" target="_blank">🔗 linkedin.com/in/giorgosparalikis/</a>
+        <a href="https://linkedin.com/in/username" class="contact-link" target="_blank">🔗 www.linkedin.com/in/giorgosparalikis</a>
         <span class="contact-sep"></span>
-        <a href="https://github.com/username" class="contact-link" target="_blank">🐙 github.com/Paralikis</a>
+        <a href="https://github.com/username" class="contact-link" target="_blank">🐙 https://github.com/Paralikis</a>
       </div>
     </div>
   </div>
@@ -287,6 +289,28 @@
   </div>
 </div>
 
+<!-- PHOTOS MODAL -->
+<div id="photos-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-box modal-box--wide" role="dialog" aria-modal="true">
+
+    <button class="modal-close" id="photos-modal-close">&times;</button>
+
+    <p class="modal-label">// project gallery</p>
+    <h3 class="modal-title">Αντιπλημμυρικό σύστημα υπόγειας διάβασης με τηλεδιοίκηση</h3>
+
+    <div class="photos-grid">
+      <div class="photo-item">
+        <img src="images/Front.jpeg" alt="Φωτογραφία εμπρός" class="photo-img">
+        <!--<p class="photo-caption">Προσομοίωση εμπρός</p>-->
+      </div>
+      <div class="photo-item">
+        <img src="images/Rear.jpeg" alt="Φωτογραφία πίσω" class="photo-img">
+       <!-- <p class="photo-caption">Προσομοίωση πίσω</p>-->
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script src="main.js"></script>
 

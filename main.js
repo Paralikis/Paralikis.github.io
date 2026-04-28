@@ -144,3 +144,112 @@ const navObserver = new IntersectionObserver((entries) => {
 });
 
 sections.forEach(section => navObserver.observe(section));
+
+const photosModal    = document.getElementById('photos-modal');
+const photosModalBox = photosModal.querySelector('.modal-box');
+const photosCloseBtn = document.getElementById('photos-modal-close');
+
+document.getElementById('photos-open-btn').addEventListener('click', () => {
+  photosModal.classList.add('open');
+  photosModal.setAttribute('aria-hidden', 'false');
+  photosCloseBtn.focus();
+});
+
+photosCloseBtn.addEventListener('click', () => {
+  photosModal.classList.remove('open');
+  photosModal.setAttribute('aria-hidden', 'true');
+});
+
+photosModal.addEventListener('click', (e) => {
+  if (!photosModalBox.contains(e.target)) {
+    photosModal.classList.remove('open');
+    photosModal.setAttribute('aria-hidden', 'true');
+  }
+});
+/* ── SCROLL ZOOM + DRAG TO PAN ── */
+let activeImg = null;
+let startX, startY;
+
+document.querySelectorAll('.photo-img').forEach(img => {
+  img._scale      = 1;
+  img._translateX = 0;
+  img._translateY = 0;
+
+  const MIN  = 1;
+  const MAX  = 3;
+  const STEP = 0.1;
+
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  /* Υπολογίζει τα μέγιστα όρια κίνησης ανάλογα με το zoom */
+  function maxTranslate() {
+    const w = img.offsetWidth;
+    const h = img.offsetHeight;
+    return {
+      x: (w * (img._scale - 1)) / 2,
+      y: (h * (img._scale - 1)) / 2
+    };
+  }
+
+  function applyTransform() {
+    /* Κλειδώνει τη θέση εντός ορίων πριν εφαρμοστεί */
+    const limits = maxTranslate();
+    img._translateX = clamp(img._translateX, -limits.x, limits.x);
+    img._translateY = clamp(img._translateY, -limits.y, limits.y);
+    img.style.transform =
+      `scale(${img._scale}) translate(${img._translateX}px, ${img._translateY}px)`;
+  }
+
+  /* ── Zoom με ρολό ── */
+  img.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      img._scale = Math.min(img._scale + STEP, MAX);
+    } else {
+      img._scale = Math.max(img._scale - STEP, MIN);
+      if (img._scale === MIN) {
+        img._translateX = 0;
+        img._translateY = 0;
+      }
+    }
+    applyTransform();
+  }, { passive: false });
+
+  /* ── Drag: αρχή ── */
+  img.addEventListener('mousedown', (e) => {
+    if (img._scale === 1) return;
+    e.preventDefault();
+    activeImg = img;
+    startX = e.clientX - img._translateX;
+    startY = e.clientY - img._translateY;
+    img.style.cursor = 'grabbing';
+  });
+});
+
+/* ── Drag: κίνηση ── */
+document.addEventListener('mousemove', (e) => {
+  if (!activeImg) return;
+  activeImg._translateX = e.clientX - startX;
+  activeImg._translateY = e.clientY - startY;
+
+  /* Εφαρμόζει clamp ώστε να μην φεύγει εκτός ορίων */
+  const w = activeImg.offsetWidth;
+  const h = activeImg.offsetHeight;
+  const maxX = (w * (activeImg._scale - 1)) / 2;
+  const maxY = (h * (activeImg._scale - 1)) / 2;
+
+  activeImg._translateX = Math.min(Math.max(activeImg._translateX, -maxX), maxX);
+  activeImg._translateY = Math.min(Math.max(activeImg._translateY, -maxY), maxY);
+
+  activeImg.style.transform =
+    `scale(${activeImg._scale}) translate(${activeImg._translateX}px, ${activeImg._translateY}px)`;
+});
+
+/* ── Drag: τέλος ── */
+document.addEventListener('mouseup', () => {
+  if (!activeImg) return;
+  activeImg.style.cursor = 'zoom-in';
+  activeImg = null;
+});
