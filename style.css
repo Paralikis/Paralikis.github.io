@@ -262,6 +262,13 @@ h1 em {
   position: relative;
 }
 
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 /* Dashed ring γύρω από το avatar */
 .hero-avatar::after {
   content: '';
