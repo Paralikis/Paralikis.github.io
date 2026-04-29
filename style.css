@@ -457,6 +457,24 @@ h1 em {
   color: var(--text);
 }
 
+#photos-open-btn {
+  font-family: 'DM SerifDisplay', serif;
+  font-size: 13px;
+  letter-spacing: .05em;
+  background: #1a3a5c;        /* σκούρο μπλε φόντο */
+  color: #7eb8d4;             /* ανοιχτό μπλε κείμενο */
+  border: 1px solid #2a5a8c;  /* περίγραμμα */
+  border-radius: 4px;
+  padding: .4rem 1rem;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+
+#photos-open-btn:hover {
+  background: #224a75;
+  color: #a8d4e8;
+}
+
 
 /* ── 8. EDUCATION ── */
 #education {
@@ -841,7 +859,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  overflow: hidden;  ← αυτό κρατά το zoom εντός ορίων */
+  overflow: hidden;  
   border-radius: 6px;
 }
 
